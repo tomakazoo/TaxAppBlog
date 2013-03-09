@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+<html>
+<body>
+    <div id="body">
+        <div id="imageWrapper" align="center">
+            <img id="loader" src="images/ajax-loader.gif" data-bind="visible: hide()" />
+        </div>
+        <div id="gridWrapper" data-bind="visible: !hide()">
+            <div id="sandBox" style="height: 200px;" data-bind="koGrid: { data: people,
+                 columnDefs: [{ field: 'FirstName', width: 100 },
+                                     { field: 'FamilyName', width: 110 },
+                                    { field: 'BirthDate', width: 100 },
+                                    { field: 'Profession', width: 100 },
+                                    { field: 'Telephone', width: 100 },
+                                    { field: 'Address', width: 150 },
+                                    { field: 'City', width: 100 },
+                                    { field: 'Country', width: 100 },
+                                    { field: 'Email', width: 150},
+                                    { field: 'Twitter', width: 110 }
+                ],
+                         autogenerateColumns: false,
+                         isMultiSelect: true,
+                         enablePaging: false }">
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
