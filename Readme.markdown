@@ -1,7 +1,7 @@
 Tax application (only excerpt for learning purposes)
 ================================
 This is a small project which shows how one can build the architecture using: ASP.NET MVC4, ASP.NET WEB Api, Entity framework 5, BreezeJS, KnockoutJS, Autofac, KoGrid...
-The blog about this you can find it [here](http://tomislavbabicnet.blogspot.com).*
+The blog about this you can find it [here](http://tomislavbabicnet.blogspot.com/2013/03/build-application-using-aspnet-mvc-4.html)
 
 Instructions
 -------------------------
