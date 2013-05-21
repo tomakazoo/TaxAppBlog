@@ -36,3 +36,20 @@ INSERT INTO [dbo].[Person]([FirstName]             ,[FamilyName]             ,[B
 INSERT INTO [dbo].[Person]([FirstName]             ,[FamilyName]             ,[BirthDate]             ,[Profession]             ,[Telephone]             ,[Address]             ,[City]             ,[Country]             ,[Email]             ,[Twitter])VALUES ('Bill','Billson','1996-04-09','Driver','2222','213dadasda','sdasdasd','sdadasd','','')
 INSERT INTO [dbo].[Person]([FirstName]             ,[FamilyName]             ,[BirthDate]             ,[Profession]             ,[Telephone]             ,[Address]             ,[City]             ,[Country]             ,[Email]             ,[Twitter])VALUES ('Villiam','Villiamson','1986-03-05','Teacher','1232321','Vladimira Gacinovica 9','Bileca','Yugoslavia','vil.villamson@bileca.com','')
 
+GO
+USE [TaxBlog]
+GO
+IF object_id('Declarations') is not null
+	DROP TABLE dbo.Declarations
+GO
+CREATE TABLE [dbo].[Declarations](
+	[DeclarationId] [int] IDENTITY(1,1) NOT NULL,
+	[DeclarationName] [nvarchar](50) NOT NULL,
+	[DeclarationYear] [nvarchar](4) NOT NULL,
+	[DeclarationNote] [nvarchar](800) NULL,
+ CONSTRAINT [PK_Declaration] PRIMARY KEY CLUSTERED 
+(
+	[DeclarationId] ASC
+)) ON [PRIMARY]
+
+GO

@@ -25,6 +25,7 @@ namespace TaxAppBlog.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<Declaration> Declarations { get; set; }
         public DbSet<Person> People { get; set; }
     }
 }

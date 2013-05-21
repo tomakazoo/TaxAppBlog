@@ -1,5 +1,6 @@
 ﻿html
 {
+    background-image:url(../Content/Images/Background.jpg);
     background-color: #e2e2e2;
     margin: 0;
     padding: 0;
@@ -906,4 +907,5 @@ tr.pager td
         {
             margin: 0;
         }
+
 }

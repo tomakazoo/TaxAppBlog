@@ -4,10 +4,20 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TaxModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="TaxModelStoreContainer">
-          <EntitySet Name="Person" EntityType="TaxModel.Store.Person" store:Type="Tables" Schema="dbo" />
+      <Schema Namespace="TaxBlogModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="TaxBlogModelStoreContainer">
+          <EntitySet Name="Declarations" EntityType="TaxBlogModel.Store.Declarations" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Person" EntityType="TaxBlogModel.Store.Person" store:Type="Tables" Schema="dbo" />
         </EntityContainer>
+        <EntityType Name="Declarations">
+          <Key>
+            <PropertyRef Name="DeclarationId" />
+          </Key>
+          <Property Name="DeclarationId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DeclarationName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="DeclarationYear" Type="nvarchar" Nullable="false" MaxLength="4" />
+          <Property Name="DeclarationNote" Type="nvarchar" MaxLength="800" />
+        </EntityType>
         <EntityType Name="Person">
           <Key>
             <PropertyRef Name="PersonId" />
@@ -28,10 +38,20 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="TaxModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="TaxBlogModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="TaxEntities" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="People" EntityType="TaxModel.Person" />
+          <EntitySet Name="Declarations" EntityType="TaxBlogModel.Declaration" />
+          <EntitySet Name="People" EntityType="TaxBlogModel.Person" />
         </EntityContainer>
+        <EntityType Name="Declaration">
+          <Key>
+            <PropertyRef Name="DeclarationId" />
+          </Key>
+          <Property Name="DeclarationId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="DeclarationName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="DeclarationYear" Type="String" Nullable="false" MaxLength="4" Unicode="true" FixedLength="false" />
+          <Property Name="DeclarationNote" Type="String" MaxLength="800" Unicode="true" FixedLength="false" />
+        </EntityType>
         <EntityType Name="Person">
           <Key>
             <PropertyRef Name="PersonId" />
@@ -53,9 +73,19 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="TaxModelStoreContainer" CdmEntityContainer="TaxEntities">
+        <EntityContainerMapping StorageEntityContainer="TaxBlogModelStoreContainer" CdmEntityContainer="TaxEntities">
+          <EntitySetMapping Name="Declarations">
+            <EntityTypeMapping TypeName="TaxBlogModel.Declaration">
+              <MappingFragment StoreEntitySet="Declarations">
+                <ScalarProperty Name="DeclarationId" ColumnName="DeclarationId" />
+                <ScalarProperty Name="DeclarationName" ColumnName="DeclarationName" />
+                <ScalarProperty Name="DeclarationYear" ColumnName="DeclarationYear" />
+                <ScalarProperty Name="DeclarationNote" ColumnName="DeclarationNote" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="People">
-            <EntityTypeMapping TypeName="TaxModel.Person">
+            <EntityTypeMapping TypeName="TaxBlogModel.Person">
               <MappingFragment StoreEntitySet="Person">
                 <ScalarProperty Name="PersonId" ColumnName="PersonId" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />

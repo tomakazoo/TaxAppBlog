@@ -19,6 +19,7 @@ namespace TaxAppBlog.App_Start
             builder.RegisterControllers(typeof(WebApiApplication).Assembly);
             builder.RegisterApiControllers(typeof(WebApiApplication).Assembly);
             builder.RegisterType<BreezePersonRepository>().AsImplementedInterfaces().InstancePerApiRequest().InstancePerHttpRequest();
+            builder.RegisterType<BreezeDeclarationRepository>().AsImplementedInterfaces().InstancePerApiRequest().InstancePerHttpRequest();
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
             GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);

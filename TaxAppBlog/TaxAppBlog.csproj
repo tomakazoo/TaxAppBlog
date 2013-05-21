@@ -148,13 +148,21 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\BreezeDeclarationController.cs" />
     <Compile Include="Controllers\BreezePeopleController.cs" />
+    <Compile Include="Controllers\DeclarationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Controllers\TaxPayerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Contracts\IBreezeDeclarationRepository.cs" />
     <Compile Include="Models\Contracts\IBreezePersonRepository.cs" />
+    <Compile Include="Models\Declaration.cs">
+      <DependentUpon>Tax.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Implementations\BreezeDeclarationRepository.cs" />
     <Compile Include="Models\Implementations\BreezePersonRepository.cs" />
     <Compile Include="Models\Person.cs">
       <DependentUpon>Tax.tt</DependentUpon>
@@ -177,7 +185,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-responsive.min.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\glyphicons-halflings-white.png" />
+    <Content Include="Content\Images\glyphicons-halflings.png" />
     <Content Include="Content\KoGrid.css" />
+    <Content Include="Content\overrides.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\bar.gif" />
     <Content Include="Content\themes\baractive.gif" />
@@ -238,11 +251,13 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Images\ajax-loader.gif" />
+    <Content Include="Images\Background.jpg" />
+    <Content Include="Images\Background.png" />
     <EntityDeploy Include="Models\Tax.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Tax.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Images\ajax-loader.gif" />
     <Content Include="Models\Tax.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Tax.edmx</DependentUpon>
@@ -257,10 +272,13 @@
       <LastGenOutput>Tax.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\breeze.intellisense.js" />
+    <Content Include="Scripts\app\DeclarationViewModel.js" />
     <Content Include="Scripts\app\Logger.js" />
     <Content Include="Scripts\app\Main.js" />
     <Content Include="Scripts\app\TaxDataService.js" />
     <Content Include="Scripts\app\TaxPayerViewModel.js" />
+    <Content Include="Scripts\bootstrap-collapse.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\breeze.debug.js" />
     <Content Include="Scripts\breeze.min.js" />
     <Content Include="Scripts\jquery-1.9.0.min.map" />
@@ -283,6 +301,7 @@
     <Content Include="Scripts\koGrid.debug.js" />
     <Content Include="Scripts\koGrid.min.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\notifier.js" />
     <Content Include="Scripts\q.js" />
     <Content Include="Scripts\q.min.js" />
     <Content Include="Web.config">
@@ -310,13 +329,16 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\Notifier.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\TaxPayer\Index.cshtml" />
+    <Content Include="Views\Declaration\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\People\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

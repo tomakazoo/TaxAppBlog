@@ -9,6 +9,7 @@ namespace TaxAppBlog.Models.Contracts
     public interface IBreezePersonRepository
     {
         IQueryable<Person> People { get; }
+        IEnumerable<Person> GetTaxPayers { get; }
         string Metadata();
     }
 }

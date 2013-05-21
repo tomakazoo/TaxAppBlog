@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Breeze.WebApi;
+using Newtonsoft.Json.Linq;
 using TaxAppBlog.Models.Contracts;
-
 
 namespace TaxAppBlog.Models.Implementations
 {
-    public class BreezePersonRepository : IBreezePersonRepository
+    public class BreezeDeclarationRepository : IBreezeDeclarationRepository
     {
         readonly EFContextProvider<TaxEntities> _contextProvider =
-            new EFContextProvider<TaxEntities>();
-        public IQueryable<Person> People
+    new EFContextProvider<TaxEntities>();
+
+        public IQueryable<Declaration> Declarations
         {
-            get { return _contextProvider.Context.People; }
+            get { return _contextProvider.Context.Declarations; }
         }
 
         public string Metadata()
@@ -22,10 +23,9 @@ namespace TaxAppBlog.Models.Implementations
             return _contextProvider.Metadata();
         }
 
-
-        public IEnumerable<Person> GetTaxPayers
+        public SaveResult SaveChanges(JObject saveBundle)
         {
-            get { return _contextProvider.Context.People; }
+            return _contextProvider.SaveChanges(saveBundle);
         }
     }
 }

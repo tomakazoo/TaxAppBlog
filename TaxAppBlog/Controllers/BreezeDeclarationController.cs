@@ -5,34 +5,38 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Breeze.WebApi;
+using Newtonsoft.Json.Linq;
 using TaxAppBlog.Models;
 using TaxAppBlog.Models.Contracts;
 
 namespace TaxAppBlog.Controllers
 {
     [BreezeController]
-    public class BreezePeopleController : ApiController
+    public class BreezeDeclarationController : ApiController
     {
-        IBreezePersonRepository repository;
-        public BreezePeopleController(IBreezePersonRepository repository)
+        IBreezeDeclarationRepository repository;
+        public BreezeDeclarationController(IBreezeDeclarationRepository repository)
         {
             this.repository = repository;
         }
 
-        public IQueryable<Person> GetPeople()
+        public IQueryable<Declaration> GetDeclarations()
         {
-            return repository.People;
+            return repository.Declarations;
         }
 
-        public IEnumerable<Person> GetTaxPayers()
-        {
-            return repository.GetTaxPayers;
-        }
         // ~/api/BreezePeople/Metadata 
         [HttpGet]
         public string Metadata()
         {
             return repository.Metadata();
         }
+
+        [HttpPost]
+        public SaveResult SaveChanges(JObject saveBundle)
+        {
+            return repository.SaveChanges(saveBundle);
+        }
+
     }
 }
